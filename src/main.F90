@@ -13,6 +13,11 @@ program main
   ! begin execution
   allocate(pm, source = sparse_matrix(10,10))
 
+  select type(pm)
+    type is(sparse_matrix)
+      print *,'FOUND THE TYPE'
+  end select 
+
   if (associated(pm)) print*,'I AM ASSOCIATED'
   deallocate(pm)
  
