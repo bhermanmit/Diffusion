@@ -1,4 +1,4 @@
-module petsc_matrix_class
+module sparse_matrix_class
 
   ! module references
   use matrix_class,  only: matrix
@@ -6,26 +6,23 @@ module petsc_matrix_class
   ! module options
   implicit none
   private
-  public :: petsc_matrix
-
-  ! external references
-!# include <finclude/petsc.h90>
+  public :: sparse_matrix
 
   ! module definitions
-  type, extends(matrix) :: petsc_matrix
+  type, extends(matrix) :: sparse_matrix
 
     ! procedures
     contains
       private
 
-      procedure :: add_element => add_petsc_element
+      procedure :: add_element => add_sparse_element
 
-  end type petsc_matrix
+  end type sparse_matrix
 
   ! interfaces
-  interface petsc_matrix
+  interface sparse_matrix
     procedure constructor ! add constructor to petsc_matrix generic interface
-  end interface petsc_matrix
+  end interface sparse_matrix
 
   ! procedures
   contains
@@ -34,16 +31,18 @@ module petsc_matrix_class
 ! initializes an instance of petsc_matrix
 !===============================================================================
 
-    function constructor(row_size, column_size)
+    function constructor(row_size, col_size) result(this)
 
       ! arguments
-      integer :: column_size
+      integer :: col_size
       integer :: row_size
-      type(petsc_matrix) :: constructor
+      type(sparse_matrix) :: this
 
       ! begin execution
-      constructor % column_size = column_size
-      constructor % row_size = row_size
+      call this % set_row_size(row_size)
+      call this % set_col_size(col_size) 
+
+      print *, 'I AM CONSTRUCTING'
 
     end function constructor
 
@@ -51,17 +50,17 @@ module petsc_matrix_class
 ! adding an element to a petsc matrix
 !===============================================================================
 
-    subroutine add_petsc_element(this,row,col,val)
+    subroutine add_sparse_element(this,row,col,val)
 
       ! arguments
-      class(petsc_matrix) :: this
+      class(sparse_matrix) :: this
       integer :: col
       integer :: row
       real(8) :: val
 
       ! print that we did this
-      print *, 'Added values to petsc matrix!'
+      print *, 'Added values to sparse matrix!'
 
-    end subroutine add_petsc_element
+    end subroutine add_sparse_element
 
-end module petsc_matrix_class
+end module sparse_matrix_class

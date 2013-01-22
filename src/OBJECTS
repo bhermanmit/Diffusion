@@ -1,4 +1,4 @@
 objects = \
 main.o \
 matrix_class.o \
-petsc_matrix_class.o
+sparse_matrix_class.o

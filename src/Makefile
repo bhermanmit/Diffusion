@@ -19,9 +19,9 @@ COMPILER = intel
 DEBUG    = no
 PROFILE  = no
 OPTIMIZE = no
-MPI      = yes
+MPI      = no
 HDF5     = no
-PETSC    = yes
+PETSC    = no
 
 #===============================================================================
 # External Library Paths
