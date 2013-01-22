@@ -1,0 +1,4 @@
+objects = \
+main.o \
+matrix_class.o \
+petsc_matrix_class.o

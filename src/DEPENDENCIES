@@ -1,0 +1,3 @@
+main.o: petsc_matrix_class.o
+
+petsc_matrix_class.o: matrix_class.o
