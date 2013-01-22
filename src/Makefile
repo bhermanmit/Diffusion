@@ -15,7 +15,7 @@ include OBJECTS
 # User Options
 #===============================================================================
 
-COMPILER = intel
+COMPILER = pgi
 DEBUG    = no
 PROFILE  = no
 OPTIMIZE = no

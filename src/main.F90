@@ -1,24 +1,27 @@
 program main
 
   ! program references
-  use sparse_matrix_class,  only: sparse_matrix
-  use matrix_class,         only: matrix
+  use diffusion_matrix_class,  only: diffusion_matrix
+  use matrix_class,            only: matrix
 
   ! program options
   implicit none
 
   ! program variables
-  class(matrix), pointer :: pm
+  class(matrix), pointer :: dm 
 
   ! begin execution
-  allocate(pm, source = sparse_matrix(10,10))
+  allocate(dm, source = diffusion_matrix(10,10))
 
-  select type(pm)
-    type is(sparse_matrix)
+  select type(dm)
+    type is(diffusion_matrix)
       print *,'FOUND THE TYPE'
   end select 
 
-  if (associated(pm)) print*,'I AM ASSOCIATED'
-  deallocate(pm)
- 
+  print *,'Size of matrix is',dm%get_row_size(),' x',dm%get_col_size()
+
+  if (associated(dm)) print*,'I AM ASSOCIATED'
+  deallocate(dm)
+  if (.not.associated(dm)) print*,'I AM NOT ASSOCIATED' 
+
 end program main

@@ -11,9 +11,16 @@ module sparse_matrix_class
   ! module definitions
   type, extends(matrix) :: sparse_matrix
 
-    ! procedures
+    ! type options
+    private
+
+    ! type attributes
+    integer, allocatable :: cols(:)
+    integer, allocatable :: rows(:)
+    real(8), allocatable :: vals(:)
+
+    ! type procedure definitions
     contains
-      private
 
       procedure :: add_element => add_sparse_element
 
