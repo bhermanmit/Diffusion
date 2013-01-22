@@ -1,4 +1,4 @@
-program = openmc
+program = mitdiff 
 
 templates = $(wildcard templates/*.o)
 xml_fort = xml-fortran/xmlparse.o \
@@ -15,13 +15,13 @@ include OBJECTS
 # User Options
 #===============================================================================
 
-COMPILER = gnu
+COMPILER = intel
 DEBUG    = no
 PROFILE  = no
 OPTIMIZE = no
-MPI      = no
+MPI      = yes
 HDF5     = no
-PETSC    = no
+PETSC    = yes
 
 #===============================================================================
 # External Library Paths

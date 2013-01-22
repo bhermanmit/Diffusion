@@ -9,13 +9,14 @@ module petsc_matrix_class
   public :: petsc_matrix
 
   ! external references
-# include <finclude/petsc.h90>
+!# include <finclude/petsc.h90>
 
   ! module definitions
   type, extends(matrix) :: petsc_matrix
 
     ! procedures
     contains
+      private
 
       procedure :: add_element => add_petsc_element
 
